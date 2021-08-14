@@ -10,7 +10,7 @@ Eloquent Variant is a theme derived from Eloquent, changes including:
   - In addition, unused section levels can be automatically skipped. (Typora >= 0.11.2)
 - Changing the styles of quotation and TOC, to make them more visible.
 - Changing the style of headings; Removing the fonts Lato and sans-serif.
-- Enlarging the viewport size.
+- Increasing the viewport size.
 
 ## License
 The theme is available as open source under the terms of the MIT License.
