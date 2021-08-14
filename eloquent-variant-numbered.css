@@ -36,6 +36,15 @@
 }
 
 /*
+ * Horizontal line
+ */
+hr {
+    border: none;
+    border-top: 1.5px dashed #333;
+    color: #333;
+}
+
+/*
  * TOC
  */
 .md-toc-content::before{
