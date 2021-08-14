@@ -1,0 +1,225 @@
+:root {
+	--bg-color: white;
+	--text-color: black;
+	--md-char-color: #f1f1f1;
+	--meta-content-color: #0099ff;
+
+	--primary-color: #454545;
+	--primary-btn-border-color: transparent;
+	--primary-btn-text-color: white;
+
+	--active-file-bg-color: #273036;
+	--active-file-text-color: #f1f1f1;
+	--ative-file-border-color: #273036;
+
+	--side-bar-bg-color: #f1f1f1;
+	--item-hover-bg-color: #f1f1f1;
+	--item-hover-text-color: var(--primary-color);
+	--monospace: "Fira Code", monospace;
+}
+
+/*
+ * Fonts
+ */
+@font-face {
+	font-family: "Fira Code";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Fira Code"), url("./eloquent/fonts/FiraCode.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Libre Baskerville";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Libre Baskerville"), url("./eloquent/fonts/LibreBaskerville.ttf") format("truetype");
+}
+
+/*
+ * TOC
+ */
+.md-toc-content::before{
+	content: "Contents";
+	font-size: 135%;
+	font-weight: bold;
+	display: block;
+	margin-left: -10px;
+	padding-top: 8px;
+	padding-bottom: 10px;
+}
+.md-toc-content{
+	padding-left: 20px;
+	padding-bottom: 12px;
+	border: 1.5px dashed rgb(150,150,150)
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body, html {
+	background-color: var(--bg-color);
+	font: normal 1rem "Libre Baskerville", serif;
+}
+
+/*
+ * Editor
+ */
+ #write {
+	font: normal 0.9rem "Libre Baskerville", serif;
+	line-height: 1.6;
+	word-wrap: break-word;
+	max-width: 55em;
+}
+
+a {
+	/*
+	 * Links
+	 */
+	color: #0099ff;
+}
+
+blockquote {
+	/*
+	 * Quotes
+	 */
+	background-color: rgb(246,246,246);
+	padding: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin: 25px;
+	font-size: 90%;
+}
+
+/*
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+	color: var(--primary-color);
+	font-family: "Libre Baskerville", serif;
+}
+h1 {
+	border-bottom: 1px solid var(--primary-color);
+	padding: 5px 0;
+	text-align: center;
+}
+
+/*
+ * Section numbers
+ */
+#write h1, body{
+    counter-reset: h2 h3 h4 h5 h6;
+}
+#write h2{
+    counter-reset: h3 h4 h5 h6;
+}
+#write h3{
+    counter-reset: h4 h5 h6;
+}
+#write h4{
+    counter-reset: h5 h6;
+}
+#write h5{
+    counter-reset: h6;
+}
+@counter-style no0{
+	system: fixed 0;
+	symbols: "" "1." "2." "3." "4." "5." "6." "7." "8." "9." "10." "11." "12." "13." "14." "15." "16." "17." "18." "19." "20." "21." "22." "23." "24." "25." "26." "27." "28." "29." "30." "31." "32." "33." "34." "35." "36." "37." "38." "39." "40." "41." "42." "43." "44." "45." "46." "47." "48." "49." "50.";
+}
+#write h2::before, #write h3::before, #write h4::before, #write h5::before, #write h6::before {
+	border-top: 5px solid var(--primary-color);
+	margin-top: 25px;
+	display: inline-block;
+	padding-top: 25px;
+	padding-left: 5px;
+	padding-right: 15px;
+	min-width: 50px;
+}
+@supports (content: counter(h2,no0)){
+	#write h2::before{
+		counter-increment: h2;
+		content: counter(h2);
+	}
+	#write h3::before{
+		counter-increment: h3;
+		content: counter(h2,no0) counter(h3);
+	}
+	#write h4::before{
+		counter-increment: h4;
+		content: counter(h2,no0) counter(h3,no0) counter(h4);
+	}
+	#write h5::before{
+		counter-increment: h5;
+		content: counter(h2,no0) counter(h3,no0) counter(h4,no0) counter(h5);
+	}
+	#write h6::before{
+		counter-increment: h6;
+		content: counter(h2,no0) counter(h3,no0) counter(h4,no0) counter(h5,no0) counter(h6);
+	}
+}
+@supports not (content: counter(h2,no0)){
+	#write h2::before{
+		counter-increment: h2;
+		content: counter(h2);
+	}
+	#write h3::before{
+		counter-increment: h3;
+		content: counter(h2) "." counter(h3);
+	}
+	#write h4::before{
+		counter-increment: h4;
+		content: counter(h2) "." counter(h3) "." counter(h4);
+	}
+	#write h5::before{
+		counter-increment: h5;
+		content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+	}
+	#write h6::before{
+		counter-increment: h6;
+		content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+	}
+}
+#write>h2.md-focus::before, #write>h3.md-focus::before, #write>h4.md-focus::before, #write>h5.md-focus::before, #write>h6.md-focus::before{
+	display: none;
+}
+
+img {
+	/*
+	 * Images
+	 */
+	margin: 5px 0;
+	max-width: 100%;
+}
+
+/*
+ * Tables
+ */
+table {
+	border-collapse: collapse;
+	font-family: "Libre Baskerville", serif;
+	overflow-x: scroll;
+}
+
+thead > tr, tr:nth-child(even) {
+	background-color: #f1f1f1;
+}
+
+th {
+	font-style: italic;
+}
+
+th, td {
+	border: 1px solid #f1f1f1;
+	padding: 7px 14px;
+	text-align: left !important;
+}
+
+.cm-s-inner {
+	/*
+	 * Code fences
+	 */
+	border-top: 1px solid var(--primary-color);
+	border-bottom: 1px solid var(--primary-color);
+	padding: 15px 0;
+}
